@@ -17,7 +17,9 @@ export function Posts() {
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedPost, setSelectedPost] = useState(null);
 
-  const {data, isError, error,  isLoading, isFetching } = useQuery('posts', fetchPosts)
+  const {data, isError, error,  isLoading, isFetching } = useQuery('posts', fetchPosts, {
+    cacheTime: 1000
+  })
 
 
   // isFetching - the async query function is in pending status
