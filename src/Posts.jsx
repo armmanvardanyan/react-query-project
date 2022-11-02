@@ -17,7 +17,19 @@ export function Posts() {
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedPost, setSelectedPost] = useState(null);
 
-  const {data} = useQuery('posts', fetchPosts)
+  const {data, isError, error,  isLoading, isFetching } = useQuery('posts', fetchPosts)
+
+
+  // isFetching - the async query function is in pending status
+  // isLaoding - means there are no cached data + isFetching(it is part of isFetching)
+
+  if(isError) {
+    return <h3>oops , something went wrong... {error.toString()}</h3>
+  }
+
+  if(isLoading) {
+    return <h3>Laoding...</h3>
+  }
 
 
 
